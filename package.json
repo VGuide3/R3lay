@@ -1,0 +1,22 @@
+{
+  "name": "r3lay",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.12.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter ./apps/web --filter ./apps/worker dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run",
+    "db:generate": "pnpm --dir packages/db drizzle-kit generate",
+    "db:migrate": "pnpm --dir packages/db drizzle-kit migrate",
+    "seed": "pnpm --dir packages/db tsx src/seed.ts",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down -v"
+  }
+}
